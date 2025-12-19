@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目详情 | 张伟 Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+        .section-title { position: relative; display: inline-block; }
+        .section-title::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 40px; height: 3px; bg-gray-900; }
+        .fade-in { animation: fadeIn 0.6s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-stone-50 text-gray-900 antialiased flex flex-col min-h-screen">
+
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-800 tracking-tight hover:text-gray-600 transition-colors">MyPortfolio</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-gray-900 uppercase tracking-wider transition-colors">主页</a>
+                <a href="experience.html" class="text-sm font-medium text-gray-600 hover:text-gray-900 uppercase tracking-wider transition-colors">个人经历</a>
+                <a href="projects.html" class="text-sm font-bold text-gray-900 border-b-2 border-gray-900 uppercase tracking-wider">项目成果</a>
+                <a href="future.html" class="text-sm font-medium text-gray-600 hover:text-gray-900 uppercase tracking-wider transition-colors">未来设想</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+            <div class="flex flex-col py-4">
+                <a href="index.html" class="px-6 py-3 font-medium text-gray-600 hover:bg-gray-50">主页</a>
+                <a href="experience.html" class="px-6 py-3 font-medium text-gray-600 hover:bg-gray-50">个人经历</a>
+                <a href="projects.html" class="px-6 py-3 font-bold text-gray-900 bg-gray-50">项目成果</a>
+                <a href="future.html" class="px-6 py-3 font-medium text-gray-600 hover:bg-gray-50">未来设想</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="flex-grow pt-28 pb-20 px-6 opacity-0 transition-opacity duration-500">
+        <div class="max-w-5xl mx-auto space-y-16">
+            
+            <!-- 1. 项目概述 (Overview) -->
+            <section class="bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-gray-100 fade-in">
+                <a href="projects.html" class="inline-flex items-center text-gray-500 hover:text-gray-900 mb-6 transition-colors text-sm font-medium">
+                    <i class="fas fa-arrow-left mr-2"></i> 返回项目列表
+                </a>
+                
+                <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <div class="flex-1 space-y-4">
+                        <div class="flex flex-wrap gap-2 mb-2" id="project-tags">
+                            <!-- Tags injected by JS -->
+                        </div>
+                        <h1 class="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight" id="project-title">项目标题</h1>
+                        <p class="text-lg text-gray-600 leading-relaxed" id="project-desc">
+                            项目简述占位符。
+                        </p>
+                        <div class="pt-4 flex gap-4">
+                            <a href="#" class="px-6 py-2 bg-gray-900 text-white rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors">访问链接</a>
+                            <a href="#" class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/3 bg-gray-50 p-6 rounded-xl border border-gray-100 text-sm space-y-4">
+                        <div>
+                            <span class="block text-gray-400 uppercase text-xs font-bold tracking-wider mb-1">我的角色</span>
+                            <span class="font-medium text-gray-800" id="project-role">前端负责人</span>
+                        </div>
+                        <div>
+                            <span class="block text-gray-400 uppercase text-xs font-bold tracking-wider mb-1">时间周期</span>
+                            <span class="font-medium text-gray-800" id="project-time">3 个月</span>
+                        </div>
+                        <div>
+                            <span class="block text-gray-400 uppercase text-xs font-bold tracking-wider mb-1">技术栈</span>
+                            <div class="flex flex-wrap gap-2 mt-1" id="project-stack">
+                                <!-- Tech Stack injected by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 顶部大图 -->
+                <div class="mt-10 rounded-xl overflow-hidden shadow-lg">
+                    <img id="hero-img" src="" alt="Project Hero" class="w-full h-auto object-cover">
+                </div>
+            </section>
+
+            <!-- 2. 痛点与需求分析 (Pain Points & Needs) -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-8 fade-in" style="animation-delay: 0.1s;">
+                <div class="bg-white rounded-2xl p-8 border border-gray-100">
+                    <div class="mb-6 flex items-center">
+                        <span class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center mr-3 text-lg"><i class="fas fa-exclamation-triangle"></i></span>
+                        <h2 class="text-2xl font-bold text-gray-900">核心痛点</h2>
+                    </div>
+                    <ul class="space-y-4 text-gray-600" id="project-pain-points">
+                        <!-- Injected by JS -->
+                    </ul>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 border border-gray-100">
+                    <div class="mb-6 flex items-center">
+                        <span class="w-10 h-10 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center mr-3 text-lg"><i class="fas fa-bullseye"></i></span>
+                        <h2 class="text-2xl font-bold text-gray-900">需求目标</h2>
+                    </div>
+                    <ul class="space-y-4 text-gray-600" id="project-goals">
+                        <!-- Injected by JS -->
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 3. 竞品分析 (Competitive Analysis) -->
+            <section class="bg-white rounded-2xl p-8 md:p-12 border border-gray-100 fade-in" style="animation-delay: 0.2s;">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">竞品分析</h2>
+                    <div class="w-16 h-1 bg-gray-800"></div>
+                </div>
+                <p class="text-gray-600 mb-6 leading-relaxed" id="project-competitor-text">
+                    分析文本占位符。
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="project-competitors-grid">
+                    <!-- Injected by JS -->
+                </div>
+            </section>
+
+            <!-- 4. 设计方案与原型 (Design & Prototype) -->
+            <section class="bg-white rounded-2xl p-8 md:p-12 border border-gray-100 fade-in" style="animation-delay: 0.3s;">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">设计方案 & 原型</h2>
+                    <div class="w-16 h-1 bg-gray-800"></div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="flex-1 text-gray-600 leading-relaxed space-y-4" id="project-design-desc">
+                        <!-- Injected by JS -->
+                    </div>
+                    <div class="flex-1">
+                        <img id="prototype-img" src="" alt="Prototype" class="rounded-lg shadow-md border border-gray-200 w-full">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. 海报与视频展示 (Showcase) -->
+            <section class="space-y-8 fade-in" style="animation-delay: 0.4s;">
+                <div class="text-center">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900">最终成果展示</h2>
+                    <p class="text-gray-500 mt-2">海报与演示视频</p>
+                </div>
+
+                <!-- 视频占位 -->
+                <div class="bg-black rounded-2xl overflow-hidden shadow-xl aspect-video relative group cursor-pointer">
+                    <img id="video-placeholder" src="" class="w-full h-full object-cover opacity-80 group-hover:opacity-60 transition-opacity">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/50 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-play text-white text-2xl pl-1"></i>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-4 left-6 text-white">
+                        <p class="font-bold text-lg">产品演示视频</p>
+                        <p class="text-sm opacity-80">1080P • 02:35</p>
+                    </div>
+                </div>
+
+                <!-- 海报网格 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="poster-grid">
+                    <!-- Injected by JS -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+    
+    <!-- 加载中状态 -->
+    <div id="loading" class="fixed inset-0 bg-white z-40 flex items-center justify-center">
+        <div class="text-center">
+            <div class="w-12 h-12 border-4 border-gray-200 border-t-gray-800 rounded-full animate-spin mx-auto mb-4"></div>
+            <p class="text-gray-500 text-sm">正在加载项目数据...</p>
+        </div>
+    </div>
+
+    <footer class="bg-white py-8 text-center border-t border-gray-100 mt-auto">
+        <p class="text-gray-500 text-sm">© <span id="year"></span> 张伟. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // --- 模拟数据库数据 ---
+        const projectsData = {
+            1: {
+                title: "智能城市数据大屏",
+                tags: ["D3.js", "React", "WebSocket", "Big Data"],
+                desc: "为某一线城市智慧管理中心打造的实时数据可视化平台。该系统集成了交通、气象、警务等六大维度的实时数据，通过 WebGL 和 SVG 技术实现高性能渲染，帮助决策者实现'一屏观全城'。",
+                role: "前端架构师",
+                time: "2023.03 - 2023.08",
+                stack: ["React 18", "D3.js v7", "Three.js", "Socket.io"],
+                heroImg: "https://picsum.photos/1200/600?random=1",
+                painPoints: [
+                    "原有系统数据延迟高，无法满足应急指挥的实时性要求。",
+                    "在低配置大屏主机上，渲染海量 DOM 节点导致页面卡顿严重。",
+                    "数据维度复杂，缺乏统一的视觉语言，导致信息获取效率低。"
+                ],
+                goals: [
+                    "实现毫秒级数据更新，延迟控制在 200ms 以内。",
+                    "优化渲染性能，确保在 4K 分辨率下保持 60FPS 帧率。",
+                    "建立模块化、可视化的组件库，支持拖拽式布局调整。"
+                ],
+                competitorText: "在项目初期，我们深入调研了阿里云 DataV 和腾讯 RayData。虽然竞品功能强大，但其定制化成本极高，且无法完全适配客户内网的特殊安全协议。因此，自研一套轻量级引擎成为最佳选择。",
+                competitors: [
+                    { name: "阿里云 DataV", feature: "组件丰富，但定制难" },
+                    { name: "腾讯 RayData", feature: "3D效果好，但由于 WebGL 兼容性问题不适用" },
+                    { name: "开源 ECharts", feature: "图表标准，但缺乏大屏特效支持" }
+                ],
+                designDesc: "<p>我们采用了'深蓝科技风'作为主视觉基调，利用高对比度的霓虹色系区分数据层级。交互上，设计了独特的'数据钻取'模式，点击地图区域即可下钻至街道级别的详细指标。</p><p class="mt-4">架构上，我们使用了 Virtual DOM + Canvas 混合渲染策略，静态图表使用 SVG 保证清晰度，动态粒子效果使用 Canvas 提升性能。</p>",
+                prototypeImg: "https://picsum.photos/800/600?random=11",
+                videoImg: "https://picsum.photos/1200/675?random=12",
+                posters: [
+                    "https://picsum.photos/600/800?random=13",
+                    "https://picsum.photos/600/800?random=14"
+                ]
+            },
+            2: {
+                title: "极简生活电商 App",
+                tags: ["PWA", "Next.js", "Tailwind CSS"],
+                desc: "一款专注于极简主义家居产品的移动端电商应用。项目重点在于极致的加载速度和原生 App 般的流畅体验，利用 PWA 技术实现了离线浏览和桌面安装功能。",
+                role: "Lead Developer",
+                time: "2022.09 - 2023.01",
+                stack: ["Next.js", "Redux Toolkit", "Framer Motion", "Service Workers"],
+                heroImg: "https://picsum.photos/1200/600?random=2",
+                painPoints: [
+                    "移动端网页在弱网环境下加载极慢，用户跳出率高达 60%。",
+                    "传统 H5 缺乏触摸反馈和转场动画，体验生硬。",
+                    "用户无法在离线状态下查看已收藏的商品。"
+                ],
+                goals: [
+                    "首屏加载时间 (LCP) 控制在 1.5s 以内。",
+                    "引入平滑的页面转场动画和手势操作。",
+                    "利用 Cache API 实现核心页面的离线访问。"
+                ],
+                competitorText: "对比了市面上的主流电商小程序，我们发现大多数应用在'内容'与'购物'的结合上做得比较割裂。我们的设计通过沉浸式的场景图购模式，让用户在浏览生活方式的同时自然产生购买欲望。",
+                competitors: [
+                    { name: "某大厂 App", feature: "功能全，但包体大，启动慢" },
+                    { name: "竞品 A 小程序", feature: "入口浅，但无法推送通知" },
+                    { name: "Instagram Shop", feature: "视觉好，但缺乏本地化支付" }
+                ],
+                designDesc: "<p>UI 设计遵循'内容优先'原则，去除了所有多余的分割线和装饰，使用大留白和高清图片。交互设计上，大量使用了底部抽屉（Bottom Sheet）代替全屏跳转，保持用户上下文。</p>",
+                prototypeImg: "https://picsum.photos/800/600?random=21",
+                videoImg: "https://picsum.photos/1200/675?random=22",
+                posters: [
+                    "https://picsum.photos/600/800?random=23",
+                    "https://picsum.photos/600/800?random=24"
+                ]
+            },
+            3: {
+                title: "Flow 企业协作 SaaS",
+                tags: ["Vue 3", "Node.js", "CRDT"],
+                desc: "面向远程团队的文档协作与任务管理平台。核心技术难点在于多人实时编辑冲突处理（CRDT 算法）以及复杂状态下的权限管理。",
+                role: "全栈开发者",
+                time: "2021.05 - 2022.02",
+                stack: ["Vue 3", "TypeScript", "Node.js", "PostgreSQL"],
+                heroImg: "https://picsum.photos/1200/600?random=3",
+                painPoints: [
+                    "传统文档工具多人编辑时经常出现覆盖、丢失内容的情况。",
+                    "任务看板与文档分离，工作流在不同 App 间割裂。",
+                    "缺乏针对代码片段和设计稿的专业预览支持。"
+                ],
+                goals: [
+                    "实现基于 OT/CRDT 算法的字符级实时同步。",
+                    "将 Kanban 看板与文档深度集成，在文档中直接提及任务。",
+                    "构建高性能的插件系统，支持第三方内容嵌入。"
+                ],
+                competitorText: "Notion 和 Lark 是这一领域的标杆。我们的差异化战略在于'轻量化'与'开发者友好'，内置了对 Markdown 的原生优良支持以及类似 VS Code 的快捷键系统。",
+                competitors: [
+                    { name: "Notion", feature: "Block 概念强大，但对于纯任务管理略重" },
+                    { name: "Trello", feature: "看板好用，但文档能力弱" },
+                    { name: "Google Docs", feature: "协作强，但缺乏结构化数据能力" }
+                ],
+                designDesc: "<p>采用了双栏布局：左侧为灵活的文档树，右侧为上下文相关的属性面板。设计了全新的'Slash Command'（/命令）菜单，让用户双手不离键盘即可完成所有操作。</p>",
+                prototypeImg: "https://picsum.photos/800/600?random=31",
+                videoImg: "https://picsum.photos/1200/675?random=32",
+                posters: [
+                    "https://picsum.photos/600/800?random=33",
+                    "https://picsum.photos/600/800?random=34"
+                ]
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // 基础设置
+            document.getElementById('year').textContent = new Date().getFullYear();
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                btn.querySelector('i').classList.toggle('fa-bars');
+                btn.querySelector('i').classList.toggle('fa-times');
+            });
+
+            // 获取 URL 参数
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = urlParams.get('id');
+            const project = projectsData[projectId];
+
+            const loadingEl = document.getElementById('loading');
+            const mainContent = document.getElementById('main-content');
+
+            if (project) {
+                // 填充数据
+                
+                // 1. Overview
+                document.title = `${project.title} | 项目详情`;
+                document.getElementById('project-title').textContent = project.title;
+                document.getElementById('project-desc').textContent = project.desc;
+                document.getElementById('project-role').textContent = project.role;
+                document.getElementById('project-time').textContent = project.time;
+                document.getElementById('hero-img').src = project.heroImg;
+
+                // Tags
+                const tagsContainer = document.getElementById('project-tags');
+                project.tags.forEach(tag => {
+                    const span = document.createElement('span');
+                    span.className = 'px-3 py-1 bg-gray-900 text-white text-xs rounded-full font-medium';
+                    span.textContent = tag;
+                    tagsContainer.appendChild(span);
+                });
+
+                // Stack
+                const stackContainer = document.getElementById('project-stack');
+                project.stack.forEach(tech => {
+                    const span = document.createElement('span');
+                    span.className = 'px-2 py-1 bg-gray-200 text-gray-700 text-xs rounded';
+                    span.textContent = tech;
+                    stackContainer.appendChild(span);
+                });
+
+                // 2. Pain Points & Goals
+                const painContainer = document.getElementById('project-pain-points');
+                project.painPoints.forEach(point => {
+                    const li = document.createElement('li');
+                    li.className = 'flex items-start';
+                    li.innerHTML = `<i class="fas fa-check-circle text-red-400 mt-1 mr-3 text-sm flex-shrink-0"></i><span>${point}</span>`;
+                    painContainer.appendChild(li);
+                });
+
+                const goalContainer = document.getElementById('project-goals');
+                project.goals.forEach(goal => {
+                    const li = document.createElement('li');
+                    li.className = 'flex items-start';
+                    li.innerHTML = `<i class="fas fa-check-circle text-blue-400 mt-1 mr-3 text-sm flex-shrink-0"></i><span>${goal}</span>`;
+                    goalContainer.appendChild(li);
+                });
+
+                // 3. Competitors
+                document.getElementById('project-competitor-text').textContent = project.competitorText;
+                const compContainer = document.getElementById('project-competitors-grid');
+                project.competitors.forEach(comp => {
+                    const div = document.createElement('div');
+                    div.className = 'bg-gray-50 p-4 rounded-lg border border-gray-200';
+                    div.innerHTML = `<h4 class="font-bold text-gray-800 text-sm mb-1">${comp.name}</h4><p class="text-xs text-gray-500">${comp.feature}</p>`;
+                    compContainer.appendChild(div);
+                });
+
+                // 4. Design
+                document.getElementById('project-design-desc').innerHTML = project.designDesc;
+                document.getElementById('prototype-img').src = project.prototypeImg;
+
+                // 5. Showcase
+                document.getElementById('video-placeholder').src = project.videoImg;
+                const posterContainer = document.getElementById('poster-grid');
+                project.posters.forEach(poster => {
+                    const img = document.createElement('img');
+                    img.src = poster;
+                    img.className = 'rounded-xl shadow-md border border-gray-100 hover:shadow-xl transition-shadow duration-300 w-full h-auto';
+                    posterContainer.appendChild(img);
+                });
+
+                // Remove loading and show content
+                setTimeout(() => {
+                    loadingEl.style.display = 'none';
+                    mainContent.classList.remove('opacity-0');
+                }, 500); // Fake delay for smooth transition
+
+            } else {
+                // Handle Not Found
+                loadingEl.innerHTML = `
+                    <div class="text-center">
+                        <h2 class="text-2xl font-bold mb-4">项目未找到</h2>
+                        <a href="projects.html" class="text-blue-600 underline">返回列表</a>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
