@@ -8,19 +8,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+        
+        /* 进场动画 */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translate3d(0, 40px, 0); }
             to { opacity: 1; transform: translate3d(0, 0, 0); }
         }
         .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
         
-        /* 社交图标微交互 */
-        .social-btn { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        .social-btn:hover { transform: translateY(-5px); }
+        /* 社交图标悬停上浮效果 */
+        .social-btn { transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .social-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
         
-        /* 点赞按钮微交互 */
+        /* 点赞按钮心跳与点击效果 */
         .like-btn { transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .like-btn:active { transform: scale(0.9); }
+        .like-btn:active { transform: scale(0.85); }
+        .like-animate { animation: heartBeat 0.4s ease-in-out; }
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
     </style>
 <script type="importmap">
 {
@@ -63,8 +71,10 @@
     </nav>
 
     <!-- 主页内容 (Hero) -->
-    <main class="flex-grow flex flex-col items-center justify-center pt-20 px-6 pb-12">
+    <main class="flex-grow flex flex-col items-center justify-center pt-24 px-6 pb-12">
         <div class="text-center space-y-8 animate-fade-in-up max-w-4xl mx-auto w-full">
+            
+            <!-- 文本介绍 -->
             <div class="space-y-4">
                 <h2 class="text-xl md:text-2xl text-gray-500 font-medium tracking-wide">你好，我是</h2>
                 <h1 class="text-5xl md:text-7xl font-bold text-gray-900 tracking-tight">张伟</h1>
@@ -75,19 +85,20 @@
                 </p>
             </div>
             
+            <!-- 按钮组 -->
             <div class="pt-6 flex flex-col items-center space-y-8">
                 <a href="projects.html" class="inline-block px-8 py-3 border-2 border-gray-900 text-gray-900 font-semibold hover:bg-gray-900 hover:text-white transition-all duration-300 rounded-full">
                     查看我的作品
                 </a>
                 
-                <!-- 社交链接 -->
+                <!-- 新增：社交链接 (纯静态，无 API 依赖) -->
                 <div class="flex space-x-6">
                     <!-- QQ -->
-                    <a href="javascript:alert('QQ: 12345678 (扫码功能开发中)')" class="social-btn w-12 h-12 flex items-center justify-center rounded-full border border-gray-200 text-gray-600 hover:bg-blue-50 hover:text-blue-500 hover:border-blue-200 bg-white shadow-sm" title="QQ">
+                    <a href="javascript:void(0)" onclick="alert('QQ号: 12345678\n(这里可以放置您的二维码图片)')" class="social-btn w-12 h-12 flex items-center justify-center rounded-full border border-gray-200 text-gray-600 hover:bg-blue-50 hover:text-blue-500 hover:border-blue-200 bg-white shadow-sm" title="加我 QQ">
                         <i class="fab fa-qq text-xl"></i>
                     </a>
                     <!-- Google -->
-                    <a href="https://google.com" target="_blank" class="social-btn w-12 h-12 flex items-center justify-center rounded-full border border-gray-200 text-gray-600 hover:bg-red-50 hover:text-red-500 hover:border-red-200 bg-white shadow-sm" title="Google">
+                    <a href="https://about.google/" target="_blank" class="social-btn w-12 h-12 flex items-center justify-center rounded-full border border-gray-200 text-gray-600 hover:bg-red-50 hover:text-red-500 hover:border-red-200 bg-white shadow-sm" title="Google Profile">
                         <i class="fab fa-google text-xl"></i>
                     </a>
                     <!-- GitHub -->
@@ -99,28 +110,28 @@
         </div>
     </main>
 
-    <!-- 互动区 -->
-    <section class="w-full max-w-2xl mx-auto px-6 mb-16 animate-fade-in-up" style="animation-delay: 0.2s;">
-        <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 text-center space-y-8">
+    <!-- 新增：互动区 (UI 仅作展示，无后端) -->
+    <section class="w-full max-w-2xl mx-auto px-6 mb-20 animate-fade-in-up" style="animation-delay: 0.2s;">
+        <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 text-center space-y-8 shadow-sm">
             <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">互动区域</h3>
             
             <!-- 点赞按钮 -->
             <div class="flex flex-col items-center space-y-3">
-                 <button id="like-btn" class="like-btn w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center text-red-500 text-2xl border border-gray-200 hover:shadow-md hover:bg-red-50 transition-all cursor-pointer">
-                    <i class="far fa-heart"></i> <!-- Initial state is empty heart -->
+                 <button id="like-btn" class="like-btn w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center text-red-500 text-2xl border border-gray-200 hover:shadow-md hover:bg-red-50 transition-all cursor-pointer focus:outline-none">
+                    <i class="far fa-heart" id="like-icon"></i>
                  </button>
-                 <span class="text-gray-500 font-medium text-sm" id="like-count">99+ 喜欢</span>
+                 <span class="text-gray-500 font-medium text-sm transition-all" id="like-count">99+ 喜欢</span>
             </div>
     
             <!-- 留言板 UI -->
-            <div class="w-full pt-4 border-t border-gray-200/50">
-                <p class="text-gray-600 mb-4 font-medium">✨ 留下你的想法</p>
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <input type="text" placeholder="说点什么..." class="flex-grow px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-transparent transition-all shadow-sm">
-                    <button class="px-6 py-3 bg-gray-900 text-white font-medium rounded-xl hover:bg-gray-800 transition-colors shadow-lg shadow-gray-200 active:transform active:scale-95">
+            <div class="w-full pt-6 border-t border-gray-200/50">
+                <p class="text-gray-600 mb-4 font-medium text-sm">✨ 觉得不错？留个言吧</p>
+                <form class="flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault(); sendMessage();">
+                    <input type="text" id="msg-input" placeholder="输入您的想法..." class="flex-grow px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-transparent transition-all shadow-sm text-sm">
+                    <button type="submit" class="px-6 py-3 bg-gray-900 text-white font-medium rounded-xl hover:bg-gray-800 transition-colors shadow-lg shadow-gray-200 active:transform active:scale-95 text-sm whitespace-nowrap">
                         发送
                     </button>
-                </div>
+                </form>
             </div>
         </div>
     </section>
@@ -132,47 +143,76 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 年份更新
+            // 年份自动更新
             document.getElementById('year').textContent = new Date().getFullYear();
             
-            // 移动端菜单
+            // 移动端菜单逻辑
             const btn = document.getElementById('mobile-menu-btn');
             const menu = document.getElementById('mobile-menu');
             btn.addEventListener('click', () => {
                 menu.classList.toggle('hidden');
-                btn.querySelector('i').classList.toggle('fa-bars');
-                btn.querySelector('i').classList.toggle('fa-times');
+                const icon = btn.querySelector('i');
+                if (menu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
             });
 
-            // 点赞功能
+            // 点赞功能 (纯前端模拟)
             const likeBtn = document.getElementById('like-btn');
-            const likeIcon = likeBtn.querySelector('i');
+            const likeIcon = document.getElementById('like-icon');
             const likeCount = document.getElementById('like-count');
             let isLiked = false;
 
             likeBtn.addEventListener('click', () => {
                 isLiked = !isLiked;
+                
+                // 触发动画类
+                likeBtn.classList.add('like-animate');
+                setTimeout(() => likeBtn.classList.remove('like-animate'), 400);
+
                 if (isLiked) {
+                    // 激活状态样式
                     likeBtn.classList.add('bg-red-500', 'border-red-500', 'text-white');
                     likeBtn.classList.remove('bg-white', 'text-red-500', 'hover:bg-red-50');
+                    
+                    // 图标变化
                     likeIcon.classList.remove('far');
                     likeIcon.classList.add('fas');
+                    
+                    // 文字变化
                     likeCount.textContent = '100+ 喜欢';
+                    likeCount.classList.add('text-red-500');
                 } else {
+                    // 恢复状态样式
                     likeBtn.classList.remove('bg-red-500', 'border-red-500', 'text-white');
                     likeBtn.classList.add('bg-white', 'text-red-500', 'hover:bg-red-50');
+                    
+                    // 图标变化
                     likeIcon.classList.remove('fas');
                     likeIcon.classList.add('far');
+                    
+                    // 文字变化
                     likeCount.textContent = '99+ 喜欢';
+                    likeCount.classList.remove('text-red-500');
                 }
-                
-                // 添加一个跳动效果
-                likeBtn.style.transform = 'scale(1.2)';
-                setTimeout(() => {
-                    likeBtn.style.transform = 'scale(1)';
-                }, 200);
             });
         });
+
+        // 留言发送模拟
+        function sendMessage() {
+            const input = document.getElementById('msg-input');
+            if (input.value.trim() === "") {
+                alert("请输入内容哦！");
+                return;
+            }
+            // 模拟发送
+            alert("感谢您的留言！(Demo: 数据未保存)");
+            input.value = ""; // 清空输入框
+        }
     </script>
 <script type="module" src="/index.tsx"></script>
 </body>
