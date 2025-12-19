@@ -9,7 +9,8 @@
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
         .section-title { position: relative; display: inline-block; }
-        .section-title::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 40px; height: 3px; bg-gray-900; }
+        /* 修复：CSS 属性 background-color 不能直接写 tailwind 类名，改为具体颜色值 */
+        .section-title::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 40px; height: 3px; background-color: #111827; }
         .fade-in { animation: fadeIn 0.6s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -210,7 +211,8 @@
                     { name: "腾讯 RayData", feature: "3D效果好，但由于 WebGL 兼容性问题不适用" },
                     { name: "开源 ECharts", feature: "图表标准，但缺乏大屏特效支持" }
                 ],
-                designDesc: "<p>我们采用了'深蓝科技风'作为主视觉基调，利用高对比度的霓虹色系区分数据层级。交互上，设计了独特的'数据钻取'模式，点击地图区域即可下钻至街道级别的详细指标。</p><p class="mt-4">架构上，我们使用了 Virtual DOM + Canvas 混合渲染策略，静态图表使用 SVG 保证清晰度，动态粒子效果使用 Canvas 提升性能。</p>",
+                // 修复：使用模板字符串 ``，因为内容中包含了 HTML 双引号
+                designDesc: `<p>我们采用了'深蓝科技风'作为主视觉基调，利用高对比度的霓虹色系区分数据层级。交互上，设计了独特的'数据钻取'模式，点击地图区域即可下钻至街道级别的详细指标。</p><p class="mt-4">架构上，我们使用了 Virtual DOM + Canvas 混合渲染策略，静态图表使用 SVG 保证清晰度，动态粒子效果使用 Canvas 提升性能。</p>`,
                 prototypeImg: "https://picsum.photos/800/600?random=11",
                 videoImg: "https://picsum.photos/1200/675?random=12",
                 posters: [
@@ -316,6 +318,7 @@
 
                 // Tags
                 const tagsContainer = document.getElementById('project-tags');
+                tagsContainer.innerHTML = ''; // Clear prev content
                 project.tags.forEach(tag => {
                     const span = document.createElement('span');
                     span.className = 'px-3 py-1 bg-gray-900 text-white text-xs rounded-full font-medium';
@@ -325,6 +328,7 @@
 
                 // Stack
                 const stackContainer = document.getElementById('project-stack');
+                stackContainer.innerHTML = ''; // Clear prev content
                 project.stack.forEach(tech => {
                     const span = document.createElement('span');
                     span.className = 'px-2 py-1 bg-gray-200 text-gray-700 text-xs rounded';
@@ -334,6 +338,7 @@
 
                 // 2. Pain Points & Goals
                 const painContainer = document.getElementById('project-pain-points');
+                painContainer.innerHTML = ''; // Clear prev content
                 project.painPoints.forEach(point => {
                     const li = document.createElement('li');
                     li.className = 'flex items-start';
@@ -342,6 +347,7 @@
                 });
 
                 const goalContainer = document.getElementById('project-goals');
+                goalContainer.innerHTML = ''; // Clear prev content
                 project.goals.forEach(goal => {
                     const li = document.createElement('li');
                     li.className = 'flex items-start';
@@ -352,6 +358,7 @@
                 // 3. Competitors
                 document.getElementById('project-competitor-text').textContent = project.competitorText;
                 const compContainer = document.getElementById('project-competitors-grid');
+                compContainer.innerHTML = ''; // Clear prev content
                 project.competitors.forEach(comp => {
                     const div = document.createElement('div');
                     div.className = 'bg-gray-50 p-4 rounded-lg border border-gray-200';
@@ -366,6 +373,7 @@
                 // 5. Showcase
                 document.getElementById('video-placeholder').src = project.videoImg;
                 const posterContainer = document.getElementById('poster-grid');
+                posterContainer.innerHTML = ''; // Clear prev content
                 project.posters.forEach(poster => {
                     const img = document.createElement('img');
                     img.src = poster;
