@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成长轨迹 | 张伟 Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+        /* 技能条动画 */
+        .skill-bar-fill {
+            width: 0;
+            animation: fillBar 1s ease-out forwards;
+        }
+        @keyframes fillBar {
+            from { width: 0; }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-gray-900 antialiased flex flex-col min-h-screen">
+
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-800 tracking-tight hover:text-gray-600 transition-colors">MyPortfolio</a>
+            
+            <!-- 桌面菜单 -->
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-gray-900 uppercase tracking-wider transition-colors">主页</a>
+                <!-- 这里高亮显示 -->
+                <a href="experience.html" class="text-sm font-bold text-gray-900 border-b-2 border-gray-900 uppercase tracking-wider">个人经历</a>
+                <a href="projects.html" class="text-sm font-medium text-gray-600 hover:text-gray-900 uppercase tracking-wider transition-colors">项目成果</a>
+                <a href="future.html" class="text-sm font-medium text-gray-600 hover:text-gray-900 uppercase tracking-wider transition-colors">未来设想</a>
+            </div>
+
+            <!-- 移动菜单按钮 -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- 移动下拉菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+            <div class="flex flex-col py-4">
+                <a href="index.html" class="px-6 py-3 font-medium text-gray-600 hover:bg-gray-50">主页</a>
+                <a href="experience.html" class="px-6 py-3 font-bold text-gray-900 bg-gray-50">个人经历</a>
+                <a href="projects.html" class="px-6 py-3 font-medium text-gray-600 hover:bg-gray-50">项目成果</a>
+                <a href="future.html" class="px-6 py-3 font-medium text-gray-600 hover:bg-gray-50">未来设想</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-32 pb-20 px-6">
+        <div class="max-w-4xl mx-auto space-y-24">
+            
+            <!-- 页面主标题 -->
+            <div class="text-center">
+                <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">成长轨迹</h1>
+                <p class="text-gray-500 max-w-xl mx-auto">从代码到设计，从执行到思考。这里记录了我作为一名创造者的进化之路。</p>
+            </div>
+
+            <!-- 区域一：技能罗盘 -->
+            <section id="skills" class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100">
+                <div class="flex items-center mb-8">
+                    <div class="w-1 h-8 bg-gray-800 mr-4 rounded-full"></div>
+                    <h2 class="text-2xl font-bold text-gray-900">技能罗盘</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- 开发技能 -->
+                    <div>
+                        <h3 class="text-sm uppercase tracking-wider text-gray-500 font-semibold mb-6">Development</h3>
+                        <div class="space-y-5">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-800 font-medium">JavaScript / TypeScript</span>
+                                    <span class="text-gray-400 text-sm">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-2">
+                                    <div class="bg-gray-800 h-2 rounded-full skill-bar-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-800 font-medium">React / Next.js</span>
+                                    <span class="text-gray-400 text-sm">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-2">
+                                    <div class="bg-gray-800 h-2 rounded-full skill-bar-fill" style="width: 85%; animation-delay: 0.1s;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-800 font-medium">Python & Automation</span>
+                                    <span class="text-gray-400 text-sm">70%</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-2">
+                                    <div class="bg-gray-800 h-2 rounded-full skill-bar-fill" style="width: 70%; animation-delay: 0.2s;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-800 font-medium">Swift / iOS</span>
+                                    <span class="text-gray-400 text-sm">60%</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-2">
+                                    <div class="bg-gray-800 h-2 rounded-full skill-bar-fill" style="width: 60%; animation-delay: 0.3s;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 设计与思维 -->
+                    <div>
+                        <h3 class="text-sm uppercase tracking-wider text-gray-500 font-semibold mb-6">Design & Thinking</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">UI / UX Design</span>
+                            <span class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">Design Systems</span>
+                            <span class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">Prototyping (Figma)</span>
+                            <span class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">Agile Management</span>
+                            <span class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">Critical Thinking</span>
+                            <span class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">Tech Writing</span>
+                        </div>
+                        
+                        <div class="mt-8 p-4 bg-stone-50 rounded-lg border border-stone-100">
+                            <p class="text-gray-600 text-sm leading-relaxed italic">
+                                "我不仅仅是一名代码编写者，更是一名产品架构师。我倾向于从用户价值出发，反推技术选型，追求技术与艺术的平衡。"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 区域二：核心经历 -->
+            <section id="experience">
+                <div class="flex items-center mb-8">
+                    <div class="w-1 h-8 bg-gray-800 mr-4 rounded-full"></div>
+                    <h2 class="text-2xl font-bold text-gray-900">核心经历</h2>
+                </div>
+
+                <div class="relative border-l border-gray-300 ml-4 md:ml-6 space-y-12">
+                    <!-- 经历 1 -->
+                    <div class="relative pl-8 md:pl-10 group">
+                        <div class="absolute -left-[7px] top-2 w-3.5 h-3.5 bg-white border-2 border-gray-800 rounded-full group-hover:bg-gray-800 transition-colors"></div>
+                        <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">高级前端工程师</h3>
+                            <span class="text-sm font-medium text-gray-500 font-mono">2021 - 至今</span>
+                        </div>
+                        <p class="text-base text-gray-600 mb-2 font-medium">科技创新有限公司</p>
+                        <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                            负责核心产品架构重构，领导5人前端团队。引入 CI/CD 流程，将发版效率提升 200%。主导了从 Vue2 到 React + TypeScript 的技术栈平滑迁移，建立了统一的企业级组件库。
+                        </p>
+                    </div>
+
+                    <!-- 经历 2 -->
+                    <div class="relative pl-8 md:pl-10 group">
+                        <div class="absolute -left-[7px] top-2 w-3.5 h-3.5 bg-white border-2 border-gray-800 rounded-full group-hover:bg-gray-800 transition-colors"></div>
+                        <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">中级 Web 开发</h3>
+                            <span class="text-sm font-medium text-gray-500 font-mono">2019 - 2021</span>
+                        </div>
+                        <p class="text-base text-gray-600 mb-2 font-medium">未来网络工作室</p>
+                        <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                            参与多个千万级流量电商平台的开发。深度参与支付网关对接与用户中心安全建设。针对移动端首屏加载速度进行了深度优化，LCP 提升了 1.5s。
+                        </p>
+                    </div>
+
+                    <!-- 经历 3 -->
+                    <div class="relative pl-8 md:pl-10 group">
+                        <div class="absolute -left-[7px] top-2 w-3.5 h-3.5 bg-white border-2 border-gray-800 rounded-full group-hover:bg-gray-800 transition-colors"></div>
+                        <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">初级设计师 & 开发者</h3>
+                            <span class="text-sm font-medium text-gray-500 font-mono">2017 - 2019</span>
+                        </div>
+                        <p class="text-base text-gray-600 mb-2 font-medium">创意数字机构</p>
+                        <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                            早期的职业生涯始于设计与代码的混合领域。负责企业官网的 UI 设计与静态页面切图，培养了 pixel-perfect 的视觉强迫症，为后续的精细化前端开发打下基础。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 区域三：顿悟与思考 -->
+            <section id="thoughts">
+                <div class="flex items-center mb-8">
+                    <div class="w-1 h-8 bg-gray-800 mr-4 rounded-full"></div>
+                    <h2 class="text-2xl font-bold text-gray-900">顿悟与思考</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- 思考卡片 1 -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-100 hover:shadow-lg transition-all cursor-pointer group">
+                        <div class="text-gray-300 mb-4 group-hover:text-gray-800 transition-colors">
+                            <i class="fas fa-quote-left text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">代码中的极简主义</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            代码不仅仅是给机器执行的指令，更是写给人看的逻辑诗篇。好的代码应该是自解释的，能够用最少的复杂度解决最核心的问题。
+                        </p>
+                        <span class="text-xs text-gray-400 font-medium uppercase tracking-wide">Architecture</span>
+                    </div>
+
+                    <!-- 思考卡片 2 -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-100 hover:shadow-lg transition-all cursor-pointer group">
+                        <div class="text-gray-300 mb-4 group-hover:text-gray-800 transition-colors">
+                            <i class="fas fa-lightbulb text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">AI 时代的界面革命</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            当大模型具备了理解意图的能力，传统的 GUI (图形用户界面) 可能会逐渐退居二线，取而代之的是 LUI (自然语言界面) 与生成式 UI 的结合。
+                        </p>
+                        <span class="text-xs text-gray-400 font-medium uppercase tracking-wide">Future Tech</span>
+                    </div>
+
+                    <!-- 思考卡片 3 -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-100 hover:shadow-lg transition-all cursor-pointer group">
+                        <div class="text-gray-300 mb-4 group-hover:text-gray-800 transition-colors">
+                            <i class="fas fa-book-open text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">长期主义的胜利</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            在技术日新月异的前端领域，追逐框架是短期行为，而打磨计算机基础、算法与设计模式，才是穿越周期的护城河。
+                        </p>
+                        <span class="text-xs text-gray-400 font-medium uppercase tracking-wide">Philosophy</span>
+                    </div>
+
+                    <!-- 思考卡片 4 -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-100 hover:shadow-lg transition-all cursor-pointer group">
+                        <div class="text-gray-300 mb-4 group-hover:text-gray-800 transition-colors">
+                            <i class="fas fa-users text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">同理心与产品力</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            工程师往往容易陷入“实现难度”的陷阱，而忽略了“用户价值”。真正的产品力源于对他人的深刻理解与同理心。
+                        </p>
+                        <span class="text-xs text-gray-400 font-medium uppercase tracking-wide">Product</span>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-white py-8 text-center border-t border-gray-100 mt-auto">
+        <p class="text-gray-500 text-sm">© <span id="year"></span> 张伟. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('year').textContent = new Date().getFullYear();
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                btn.querySelector('i').classList.toggle('fa-bars');
+                btn.querySelector('i').classList.toggle('fa-times');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目成果 | 张伟 Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+        .project-card:hover .project-overlay { opacity: 1; }
+        .project-card:hover img { transform: scale(1.05); }
+    </style>
+</head>
+<body class="bg-white text-gray-900 antialiased flex flex-col min-h-screen">
+
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-800 tracking-tight hover:text-gray-600 transition-colors">MyPortfolio</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-gray-900 uppercase tracking-wider transition-colors">主页</a>
+                <a href="experience.html" class="text-sm font-medium text-gray-600 hover:text-gray-900 uppercase tracking-wider transition-colors">个人经历</a>
+                <a href="projects.html" class="text-sm font-bold text-gray-900 border-b-2 border-gray-900 uppercase tracking-wider">项目成果</a>
+                <a href="future.html" class="text-sm font-medium text-gray-600 hover:text-gray-900 uppercase tracking-wider transition-colors">未来设想</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+            <div class="flex flex-col py-4">
+                <a href="index.html" class="px-6 py-3 font-medium text-gray-600 hover:bg-gray-50">主页</a>
+                <a href="experience.html" class="px-6 py-3 font-medium text-gray-600 hover:bg-gray-50">个人经历</a>
+                <a href="projects.html" class="px-6 py-3 font-bold text-gray-900 bg-gray-50">项目成果</a>
+                <a href="future.html" class="px-6 py-3 font-medium text-gray-600 hover:bg-gray-50">未来设想</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-32 pb-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">项目成果</h2>
+                <div class="w-20 h-1 bg-gray-300 mx-auto"></div>
+                <p class="mt-4 text-gray-500 max-w-2xl mx-auto">
+                    这里展示了一些我近期主导或参与的核心项目。每一个项目都代表了我对技术细节的追求。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 项目 1 -->
+                <div class="project-card group bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="relative overflow-hidden h-48 bg-gray-200">
+                        <img src="https://picsum.photos/600/400?random=1" alt="智能数据大屏" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="project-overlay absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                            <button class="p-3 bg-white rounded-full hover:bg-gray-200 text-gray-900 transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                            <button class="p-3 bg-white rounded-full hover:bg-gray-200 text-gray-900 transition-colors">
+                                <i class="fab fa-github"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">智能数据大屏</h3>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-2">
+                            基于 D3.js 和原生 JS 的实时数据可视化平台，服务于智慧城市管理中心。
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full font-medium">D3.js</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full font-medium">WebSocket</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目 2 -->
+                <div class="project-card group bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="relative overflow-hidden h-48 bg-gray-200">
+                        <img src="https://picsum.photos/600/400?random=2" alt="极简电商 App" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="project-overlay absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                            <button class="p-3 bg-white rounded-full hover:bg-gray-200 text-gray-900 transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                            <button class="p-3 bg-white rounded-full hover:bg-gray-200 text-gray-900 transition-colors">
+                                <i class="fab fa-github"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">极简电商 App</h3>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-2">
+                            专注于移动端购物体验的 PWA 应用，拥有流畅的 CSS 动画和极快的加载速度。
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full font-medium">PWA</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full font-medium">Tailwind</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目 3 -->
+                <div class="project-card group bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="relative overflow-hidden h-48 bg-gray-200">
+                        <img src="https://picsum.photos/600/400?random=3" alt="企业协作 SaaS" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="project-overlay absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                            <button class="p-3 bg-white rounded-full hover:bg-gray-200 text-gray-900 transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                            <button class="p-3 bg-white rounded-full hover:bg-gray-200 text-gray-900 transition-colors">
+                                <i class="fab fa-github"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">企业协作 SaaS</h3>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-2">
+                            一套用于团队任务管理和文档协作的工具，支持多人实时编辑，采用 Serverless 架构。
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full font-medium">Node.js</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full font-medium">Socket.io</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white py-8 text-center border-t border-gray-100 mt-auto">
+        <p class="text-gray-500 text-sm">© <span id="year"></span> 张伟. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('year').textContent = new Date().getFullYear();
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                btn.querySelector('i').classList.toggle('fa-bars');
+                btn.querySelector('i').classList.toggle('fa-times');
+            });
+        });
+    </script>
+</body>
+</html>

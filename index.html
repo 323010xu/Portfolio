@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页 | 张伟 Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translate3d(0, 40px, 0); }
+            to { opacity: 1; transform: translate3d(0, 0, 0); }
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        
+        /* 社交图标微交互 */
+        .social-btn { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .social-btn:hover { transform: translateY(-5px); }
+        
+        /* 点赞按钮微交互 */
+        .like-btn { transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .like-btn:active { transform: scale(0.9); }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-white text-gray-900 antialiased flex flex-col min-h-screen">
+
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-800 tracking-tight hover:text-gray-600 transition-colors">MyPortfolio</a>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-sm font-bold text-gray-900 border-b-2 border-gray-900 uppercase tracking-wider">主页</a>
+                <a href="experience.html" class="text-sm font-medium text-gray-600 hover:text-gray-900 uppercase tracking-wider transition-colors">个人经历</a>
+                <a href="projects.html" class="text-sm font-medium text-gray-600 hover:text-gray-900 uppercase tracking-wider transition-colors">项目成果</a>
+                <a href="future.html" class="text-sm font-medium text-gray-600 hover:text-gray-900 uppercase tracking-wider transition-colors">未来设想</a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+            <div class="flex flex-col py-4">
+                <a href="index.html" class="px-6 py-3 font-bold text-gray-900 bg-gray-50">主页</a>
+                <a href="experience.html" class="px-6 py-3 font-medium text-gray-600 hover:bg-gray-50">个人经历</a>
+                <a href="projects.html" class="px-6 py-3 font-medium text-gray-600 hover:bg-gray-50">项目成果</a>
+                <a href="future.html" class="px-6 py-3 font-medium text-gray-600 hover:bg-gray-50">未来设想</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主页内容 (Hero) -->
+    <main class="flex-grow flex flex-col items-center justify-center pt-20 px-6 pb-12">
+        <div class="text-center space-y-8 animate-fade-in-up max-w-4xl mx-auto w-full">
+            <div class="space-y-4">
+                <h2 class="text-xl md:text-2xl text-gray-500 font-medium tracking-wide">你好，我是</h2>
+                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 tracking-tight">张伟</h1>
+                <p class="text-lg md:text-2xl text-gray-600 max-w-2xl mx-auto leading-relaxed mt-6">
+                    专注于创造卓越用户体验的前端工程师 &amp; UI 设计师。
+                    <br class="hidden md:block" />
+                    致力于用代码构建简洁、高效的数字产品。
+                </p>
+            </div>
+            
+            <div class="pt-6 flex flex-col items-center space-y-8">
+                <a href="projects.html" class="inline-block px-8 py-3 border-2 border-gray-900 text-gray-900 font-semibold hover:bg-gray-900 hover:text-white transition-all duration-300 rounded-full">
+                    查看我的作品
+                </a>
+                
+                <!-- 社交链接 -->
+                <div class="flex space-x-6">
+                    <!-- QQ -->
+                    <a href="javascript:alert('QQ: 12345678 (扫码功能开发中)')" class="social-btn w-12 h-12 flex items-center justify-center rounded-full border border-gray-200 text-gray-600 hover:bg-blue-50 hover:text-blue-500 hover:border-blue-200 bg-white shadow-sm" title="QQ">
+                        <i class="fab fa-qq text-xl"></i>
+                    </a>
+                    <!-- Google -->
+                    <a href="https://google.com" target="_blank" class="social-btn w-12 h-12 flex items-center justify-center rounded-full border border-gray-200 text-gray-600 hover:bg-red-50 hover:text-red-500 hover:border-red-200 bg-white shadow-sm" title="Google">
+                        <i class="fab fa-google text-xl"></i>
+                    </a>
+                    <!-- GitHub -->
+                    <a href="https://github.com" target="_blank" class="social-btn w-12 h-12 flex items-center justify-center rounded-full border border-gray-200 text-gray-600 hover:bg-gray-900 hover:text-white hover:border-gray-900 bg-white shadow-sm" title="GitHub">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 互动区 -->
+    <section class="w-full max-w-2xl mx-auto px-6 mb-16 animate-fade-in-up" style="animation-delay: 0.2s;">
+        <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 text-center space-y-8">
+            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">互动区域</h3>
+            
+            <!-- 点赞按钮 -->
+            <div class="flex flex-col items-center space-y-3">
+                 <button id="like-btn" class="like-btn w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center text-red-500 text-2xl border border-gray-200 hover:shadow-md hover:bg-red-50 transition-all cursor-pointer">
+                    <i class="far fa-heart"></i> <!-- Initial state is empty heart -->
+                 </button>
+                 <span class="text-gray-500 font-medium text-sm" id="like-count">99+ 喜欢</span>
+            </div>
+    
+            <!-- 留言板 UI -->
+            <div class="w-full pt-4 border-t border-gray-200/50">
+                <p class="text-gray-600 mb-4 font-medium">✨ 留下你的想法</p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input type="text" placeholder="说点什么..." class="flex-grow px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-transparent transition-all shadow-sm">
+                    <button class="px-6 py-3 bg-gray-900 text-white font-medium rounded-xl hover:bg-gray-800 transition-colors shadow-lg shadow-gray-200 active:transform active:scale-95">
+                        发送
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-white py-8 text-center border-t border-gray-100">
+        <p class="text-gray-500 text-sm">© <span id="year"></span> 张伟. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 年份更新
+            document.getElementById('year').textContent = new Date().getFullYear();
+            
+            // 移动端菜单
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                btn.querySelector('i').classList.toggle('fa-bars');
+                btn.querySelector('i').classList.toggle('fa-times');
+            });
+
+            // 点赞功能
+            const likeBtn = document.getElementById('like-btn');
+            const likeIcon = likeBtn.querySelector('i');
+            const likeCount = document.getElementById('like-count');
+            let isLiked = false;
+
+            likeBtn.addEventListener('click', () => {
+                isLiked = !isLiked;
+                if (isLiked) {
+                    likeBtn.classList.add('bg-red-500', 'border-red-500', 'text-white');
+                    likeBtn.classList.remove('bg-white', 'text-red-500', 'hover:bg-red-50');
+                    likeIcon.classList.remove('far');
+                    likeIcon.classList.add('fas');
+                    likeCount.textContent = '100+ 喜欢';
+                } else {
+                    likeBtn.classList.remove('bg-red-500', 'border-red-500', 'text-white');
+                    likeBtn.classList.add('bg-white', 'text-red-500', 'hover:bg-red-50');
+                    likeIcon.classList.remove('fas');
+                    likeIcon.classList.add('far');
+                    likeCount.textContent = '99+ 喜欢';
+                }
+                
+                // 添加一个跳动效果
+                likeBtn.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    likeBtn.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+    </script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
